@@ -1,0 +1,82 @@
+package com.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class register1
+ */
+@WebServlet("/register1")
+public class register1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       protected void processrequest(HttpServletRequest request,HttpServletResponse response) 
+       throws ServletException, IOException {
+		response.setContentType("text/html");
+		
+		PrintWriter out = response.getWriter();
+    	   
+    	   
+    	   
+    	   System.out.println("Setvlet OK");
+		System.out.println(request.getParameter("name"));
+		System.out.println(request.getParameter("surname"));
+		System.out.println(request.getParameter("id"));
+		System.out.println(request.getParameter("password"));
+		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("tel"));
+		
+		String name = request.getParameter("name");
+		String surname = request.getParameter("surname");
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		String tel = request.getParameter("tel");
+		
+		
+		if(email.contains("@")) {
+			out.println("register success: " + request.getParameter("name"));
+			
+		}else {
+			out.println("register fail!:" + request.getParameter("name"));
+		}
+		
+		
+		out.println("Register success:" + request.getParameter("name"));
+		
+		
+		
+		
+	}
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public register1() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("").append(request.getContextPath());
+		processrequest(request,response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
